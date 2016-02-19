@@ -26,5 +26,8 @@ const AccessTokenSecret = "Your Access Token Secret"
 go run main.go
 ```
 
+## Binary
+[Windows](https://dl.dropboxusercontent.com/u/35247301/go-now-playing.exe)
+
 ## License
 ### MIT
