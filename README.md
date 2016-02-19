@@ -18,6 +18,7 @@ const AccessTokenSecret = "Your Access Token Secret"
   
 ### Run
 ```go
+cd your-go-nowplaying-path
 go run main.go
 ```
 
