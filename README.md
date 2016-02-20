@@ -9,6 +9,11 @@ go get github.com/yaegaki/go-nowplaying
 
 ## Usage
 ### Move go-nowplaying directory
+for Windows
+```cmd
+cd %GOPATH%/src/github.com/yaegaki/go-nowplaying
+```
+for OSX
 ```sh
 cd $GOPATH/src/github.com/yaegaki/go-nowplaying
 ```
