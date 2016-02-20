@@ -55,9 +55,7 @@ func NowPlaying() error {
 		return err
 	}
 
-	anaconda.SetConsumerKey(ConsumerKey)
-	anaconda.SetConsumerSecret(ConsumerSecret)
-	api := anaconda.NewTwitterApi(AccessToken, AccessTokenSecret)
+	api := initTwitterAPI()
 
 	artwork := <-artworks
 	var data url.Values
@@ -98,10 +96,36 @@ func NowPlaying() error {
 		tweetStr = fmt.Sprintf("%v by %v", tweetStr, t.Artist)
 	}
 
-	tweet, _ := api.PostTweet(tweetStr, data)
+	tweet, err := api.PostTweet(tweetStr, data)
+	if err != nil {
+		return err
+	}
 	fmt.Println("Tweet Success.")
 	fmt.Println("Posted:")
 	fmt.Println(tweet.Text)
 
 	return nil
+}
+
+func initTwitterAPI() *anaconda.TwitterApi {
+	consumerKey := os.Getenv("GN_CONSUMER_KEY")
+	if consumerKey == "" {
+		consumerKey = ConsumerKey
+	}
+	consumerSecret := os.Getenv("GN_CONSUMER_SECRET")
+	if consumerSecret == "" {
+		consumerSecret = ConsumerSecret
+	}
+	accessToken := os.Getenv("GN_ACCESS_TOKEN")
+	if accessToken == "" {
+		accessToken = AccessToken
+	}
+	accessTokenSecret := os.Getenv("GN_ACCESS_TOKEN_SECRET")
+	if accessTokenSecret == "" {
+		accessTokenSecret = AccessTokenSecret
+	}
+
+	anaconda.SetConsumerKey(consumerKey)
+	anaconda.SetConsumerSecret(consumerSecret)
+	return anaconda.NewTwitterApi(accessToken, accessTokenSecret)
 }
