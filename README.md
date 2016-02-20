@@ -8,7 +8,7 @@ go get github.com/yaegaki/go-nowplaying
 ```
 
 ## Usage
-### Move go-nowplaying directory
+### Move to go-nowplaying directory
 for Windows
 ```cmd
 cd %GOPATH%/src/github.com/yaegaki/go-nowplaying
