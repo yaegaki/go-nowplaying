@@ -4,7 +4,7 @@ Tweet iTunes's nowplaying song for **Windows and OSX**.
 
 ## Install
 ```
-go get github.com/yaegaki/go-nowplaying
+go get -u github.com/yaegaki/go-nowplaying
 ```
 
 ## Usage
