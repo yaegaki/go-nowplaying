@@ -91,9 +91,11 @@ func NowPlaying() error {
 		}
 	}
 
-	tweetStr := fmt.Sprintf("#nowplaying %v", t.Name)
-	if t.Artist != "" {
-		tweetStr = fmt.Sprintf("%v by %v", tweetStr, t.Artist)
+	name := t.Name()
+	tweetStr := fmt.Sprintf("#nowplaying %v", name)
+	artist := t.Artist()
+	if artist != "" {
+		tweetStr = fmt.Sprintf("%v by %v", tweetStr, artist)
 	}
 
 	tweet, err := api.PostTweet(tweetStr, data)
